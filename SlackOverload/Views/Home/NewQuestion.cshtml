@@ -1,0 +1,56 @@
+﻿@model SlackOverload.Models.QuestionTagViewModel
+
+@{
+    ViewData["Title"] = "NewQuestion";
+}
+
+<h1>New Question</h1>
+
+<h4>Question</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewQuestion">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Question.Title" class="control-label"></label>
+                <input asp-for="Question.Title" name="title" class="form-control" />
+                <span asp-validation-for="Question.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Question.Content" class="control-label"></label>
+                <textarea asp-for="Question.Content" name="content" class="form-control"></textarea>
+                <span asp-validation-for="Question.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" class="control-label"></label>
+                <input asp-for="Tags.Name" name="tags" class="form-control" />
+                <input asp-for="Tags.Name" name="tags2" class="form-control" />
+                <input asp-for="Tags.Name" name="tags3" class="form-control" />
+                <span asp-validation-for="Tags.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script type="text/javascript" src="https://cdn.tiny.cloud/1/m1hdvffhdxvspjtf4bslj95pkywwbvlrsig1h961nlke9tdx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      force_br_newlines : false,
+      force_p_newlines : false,
+      forced_root_block : '',
+    });
+  </script>

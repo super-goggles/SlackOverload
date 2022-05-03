@@ -1,0 +1,44 @@
+﻿@model SlackOverload.Models.Answer
+
+@{
+    ViewData["Title"] = "AnswerQuestion";
+}
+
+<h1>Answer Question</h1>
+
+<h4>Answer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AnswerQuestion" asp-route-questionId="@ViewBag.QuestionId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script type="text/javascript" src="https://cdn.tiny.cloud/1/m1hdvffhdxvspjtf4bslj95pkywwbvlrsig1h961nlke9tdx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      force_br_newlines : false,
+      force_p_newlines : false,
+      forced_root_block : '',
+    });
+  </script>

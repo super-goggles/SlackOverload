@@ -1,0 +1,6 @@
+﻿@model SelectList
+
+<form asp-action="SetUserAsAdmin" method="post">
+    <select asp-items=@Model name="userId"></select>
+    <button type="submit">Submit</button>
+</form>

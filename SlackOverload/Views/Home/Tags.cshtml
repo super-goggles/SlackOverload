@@ -1,0 +1,54 @@
+﻿@model SlackOverload.Models.Tag
+
+@{
+    ViewData["Title"] = "Tags";
+}
+
+<h1>Tag</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Number Of Answers
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Questions) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.User.Email (@item.User.Reputation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answers.Count)
+            </td>
+            <td>
+                <a asp-action="QuestionDetails" asp-route-id="@item.Id">Details</a>
+
+            </td>
+            <td>
+                <a asp-action=AnswerQuestion asp-route-questionId="@item.Id">Answer this question</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="MainPage">Back to Main Page</a>
+</div>

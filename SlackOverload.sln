@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackOverload", "SlackOverload\SlackOverload.csproj", "{A1E018CB-343B-4A6D-A964-3E4B19BF3FBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1E018CB-343B-4A6D-A964-3E4B19BF3FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E018CB-343B-4A6D-A964-3E4B19BF3FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E018CB-343B-4A6D-A964-3E4B19BF3FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E018CB-343B-4A6D-A964-3E4B19BF3FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC20542C-73C0-48FF-BEB0-6F6E37891444}
+	EndGlobalSection
+EndGlobal

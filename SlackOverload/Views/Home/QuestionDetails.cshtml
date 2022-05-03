@@ -1,0 +1,87 @@
+﻿@model SlackOverload.Models.Question
+
+@{
+    ViewData["Title"] = "QuestionDetails";
+}
+
+<h1>Question Details</h1>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+            <p>Upvotes: @Model.Upvotes</p>
+            <a asp-action=Upvote asp-route-id="@Model.Id">Upvote</a>
+            <p>@ViewBag.Message</p>
+            <p>Downvotes: @Model.Downvotes</p>
+            <a asp-action=Downvote asp-route-id="@Model.Id">Downvote</a>
+            <p>@ViewBag.Message</p>
+            <h6>Tags</h6>
+            @foreach (var t in @Model.Tags)
+            {
+                <a asp-action=Tags asp-route-id="@t.Id">@t.Name</a>
+            }
+            <h6>Comments</h6>
+            @foreach (var c in @Model.Comments)
+            {
+               <p>@c.Content</p>
+               <br/>
+            }
+            <a asp-action=AddComment asp-route-id="@Model.Id">Add a comment</a>
+            <hr />
+        </dd>
+        <dd></dd>
+        <dd class = "col-sm-10">
+            <h5>Answers</h5>
+            @foreach(var a in Model.Answers)
+            {
+                if(a.CorrectAnswer == 1)
+                {
+                    <strong>Correct Answer</strong>
+                    <p>@a.Content</p>
+                    <p>Upvotes: @a.Upvotes</p>
+                    <a asp-action=AnswerUpvote asp-route-id="@a.Id">Upvote</a>
+                    <p>@ViewBag.Message</p>
+                    <p>Downvotes: @a.Downvotes</p>
+                    <a asp-action=AnswerDownvote asp-route-id="@a.Id">Downvote</a>
+                    <p>@ViewBag.Message</p>
+                    <h6>Comments</h6>
+                    @foreach (var c in a.Comments)
+                    {
+                      <p>@c.Content</p>
+                    }
+                    <a asp-action=AddAnswerComment asp-route-id="@a.Id">Add a comment</a>
+                    <hr/>
+                }
+                else
+                {
+                    <p>@a.Content</p>
+                    <p>Upvotes: @a.Upvotes</p>
+                    <a asp-action=AnswerUpvote asp-route-id="@a.Id">Upvote</a>
+                    <p>@ViewBag.Message</p>
+                    <p>Downvotes: @a.Downvotes</p>
+                    <a asp-action=AnswerDownvote asp-route-id="@a.Id">Downvote</a>
+                    <p>@ViewBag.Message</p>
+                    <h6>Comments</h6>
+                    @foreach (var c in a.Comments)
+                    {
+                      <p>@c.Content</p>
+                    }
+                    <a asp-action=AddAnswerComment asp-route-id="@a.Id">Add a comment</a>
+                    <br/>
+                    <a asp-action="MarkAsCorrect" asp-route-id="@a.Id">Mark as correct</a>
+                    <hr/>
+                }
+            }
+        </dd>
+        
+    </dl>
+</div>
+<div>
+     <a asp-action=AnswerQuestion asp-route-questionId="@Model.Id">Answer this question</a>
+     <p></p>
+    <a asp-action="MainPage">Back to List</a>
+</div>
+
